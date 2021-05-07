@@ -15,8 +15,8 @@ if (isset($_FILES['file'])) {
 	$name = $_FILES['file']['name'];
 	
 
-//header('Content-disposition: attachment; filename=copy.xls');
-//header('Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-disposition: attachment; filename=copy.xls');
+header('Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 	
 if ( $xlsx = SimpleXLSX::parse( $_FILES['file']['tmp_name'] ) ) {
 
