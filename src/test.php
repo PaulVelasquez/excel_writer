@@ -15,7 +15,8 @@ if (isset($_FILES['file'])) {
 	$name = $_FILES['file']['name'];
 	
 
-
+//header('Content-disposition: attachment; filename=copy.xls');
+//header('Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 	
 if ( $xlsx = SimpleXLSX::parse( $_FILES['file']['tmp_name'] ) ) {
 
@@ -156,7 +157,11 @@ echo '</table>';
 	echo SimpleXLSX::parseError();
 	}
 }
-
+echo '<h2>Upload form</h2>
+<form method="post" enctype="multipart/form-data">
+*.XLSX <input type="file" name="file"  />&nbsp;&nbsp;<input type="submit" value="Parse" />
+</form>';
+echo '<pre>';
 
 ?>
 
