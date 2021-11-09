@@ -21,21 +21,7 @@ header('Content-type: application/vnd.openxmlformats-officedocument.spreadsheetm
 if ( $xlsx = SimpleXLSX::parse( $_FILES['file']['tmp_name'] ) ) {
 
 	$start = array_column($xlsx->rows(),0 );
-	$column_names = array(
-		"product name"
-		, "Title Keyword 1"
-		, "Title Keyword 2"
-		,"Title Keyword 3"
-		,"Title Keyword 4"
-		,"Title Keyword 5"
-		,"Title Keyword 5"
-		,"Description Keyword 1"
-		,"Description Keyword 2"
-		,"Description Keyword 3"
-		,"Description Keyword 4"
-		,"Description Keyword 5"
-
-	);
+	
 	$pindex=0;$kw1index=0;$kw2ndex=0;$kw3index=0;$kw4index=0;$kw5index=0;$d1index=0;$d2index=0;$d3index=0;$d4index=0;$d5index=0;
 	//$count = count($start[0] ));
 	$dim = $xlsx->dimension();
@@ -45,34 +31,34 @@ if ( $xlsx = SimpleXLSX::parse( $_FILES['file']['tmp_name'] ) ) {
 		if( strtolower($column[0]) === strtolower("product name")){
 			$pindex=$i;
 		}
-		if( strtolower($column[0]) === strtolower("Title Keyword 1")){
+		if( strtolower($column[0]) === strtolower("Title Keywords 1")){
 			$kw1index=$i;
 		}
-		if( strtolower($column[0]) === strtolower("Title Keyword 2")){
+		if( strtolower($column[0]) === strtolower("Title Keywords 2")){
 			$kw2ndex=$i;
 		}
-		if( strtolower($column[0]) === strtolower("Title Keyword 3")){
+		if( strtolower($column[0]) === strtolower("Title Keywords 3")){
 			$kw3index=$i;
 		}
-		if( strtolower($column[0]) === strtolower("Title Keyword 4")){
+		if( strtolower($column[0]) === strtolower("Title Keywords 4")){
 			$kw4index=$i;
 		}
-		if( strtolower($column[0]) === strtolower("Title Keyword 5")){
+		if( strtolower($column[0]) === strtolower("Title Keywords 5")){
 			$kw5index=$i;
 		}
-		if( strtolower($column[0]) === strtolower("Description Keyword 1")){
+		if( strtolower($column[0]) === strtolower("Description Keywords 1")){
 			$d1index=$i;
 		}
-		if( strtolower($column[0]) === strtolower("Description Keyword 2")){
+		if( strtolower($column[0]) === strtolower("Description Keywords 2")){
 			$d2index=$i;
 		}
-		if( strtolower($column[0]) === strtolower("Description Keyword 3")){
+		if( strtolower($column[0]) === strtolower("Description Keywords 3")){
 			$d3index=$i;
 		}
-		if( strtolower($column[0]) === strtolower("Description Keyword 4")){
+		if( strtolower($column[0]) === strtolower("Description Keywords 4")){
 			$d4index=$i;
 		}
-		if( strtolower($column[0]) === strtolower("Description Keyword 5")){
+		if( strtolower($column[0]) === strtolower("Description Keywords 5")){
 			$d5index=$i;
 		}
 
@@ -104,42 +90,56 @@ if ( $xlsx = SimpleXLSX::parse( $_FILES['file']['tmp_name'] ) ) {
 		for($i = 1; $i<$endofFile;$i++) {
 
 		
-
-			echo '<tr>';
-			echo '<td>' . ( isset( $ProductNames[$i]  ) ? $ProductNames[$i]  : '&nbsp;' )
-			.'<td>' . 1 . '</td>'
-			.'<td>' . ( isset( $KW1[$i]  ) ? $KW1[$i]  : '&nbsp;' )
-			.'<td>' . ( isset( $Des1[$i]  ) ? $Des1[$i]  : '&nbsp;' );
-			echo '</tr>';
+			if(($KW1[$i]!="") || ($Des1[$i]!="")){
+				echo '<tr>';
+				echo '<td>' . ( isset( $ProductNames[$i]  ) ? $ProductNames[$i]  : '&nbsp;' )
+				.'<td>' . "KW 1" . '</td>'
+				.'<td>' . ( isset( $KW1[$i]  ) ? strval($KW1[$i])  : '&nbsp;' )
+				.'<td>' . ( isset( $Des1[$i]  ) ?  strval($Des1[$i])  : '&nbsp;' );
+				echo '</tr>';
+			}
 			
-			echo '<tr>';
-			echo '<td>' . ( isset( $ProductNames[$i]  ) ? $ProductNames[$i]  : '&nbsp;' )
-			.'<td>' . 2 . '</td>'
-			.'<td>' . ( isset( $KW2[$i]  ) ? $KW2[$i]  : '&nbsp;' )
-			.'<td>' . ( isset( $Des2[$i]  ) ? $Des2[$i]  : '&nbsp;' );
-			echo '</tr>';
+			
+			
+			if(($KW2[$i]!="") || ($Des2[$i]!="")){
+				echo '<tr>';
+				echo '<td>' . ( isset( $ProductNames[$i]  ) ? $ProductNames[$i]  : '&nbsp;' )
+				.'<td>' . "KW 2" . '</td>'
+				.'<td>' . ( isset( $KW2[$i]  ) ?  strval($KW2[$i])  : '&nbsp;' )
+				.'<td>' . ( isset( $Des2[$i]  ) ?  strval($Des2[$i])  : '&nbsp;' );
+				echo '</tr>';
+			}
+			
+			if(($KW3[$i]!="") || ($Des3[$i]!="")){
+				echo '<tr>';
+				echo '<td>' . ( isset( $ProductNames[$i]  ) ? $ProductNames[$i]  : '&nbsp;' )
+				.'<td>' . "KW 3" . '</td>'
+				.'<td>' . ( isset( $KW3[$i]  ) ?  strval($KW3[$i])  : '&nbsp;' )
+				.'<td>' . ( isset( $Des3[$i]  ) ?  strval($Des3[$i])  : '&nbsp;' );
+				echo '</tr>';
+			}
+			
+			
+			if(($KW4[$i]!="") || ($Des4[$i]!="")){
+				echo '<tr>';
+				echo '<td>' . ( isset( $ProductNames[$i]  ) ? $ProductNames[$i]  : '&nbsp;' )
+				.'<td>' . "KW 4" . '</td>'
+				.'<td>' . ( isset( $KW4[$i]  ) ?  strval($KW4[$i])  : '&nbsp;' )
+				.'<td>' . ( isset( $Des4[$i]  ) ?  strval($Des4[$i])  : '&nbsp;' );
+				echo '</tr>';
+			}
+			
+			if(($KW5[$i]!="") || ($Des5[$i]!="")){
+				echo '<tr>';
+				echo '<td>' . ( isset( $ProductNames[$i]  ) ? $ProductNames[$i]  : '&nbsp;' )
+				.'<td>' . "KW 5" . '</td>'
+				.'<td>' . ( isset( $KW5[$i]  ) ?  strval($KW5[$i])  : '&nbsp;' )
+				.'<td>' . ( isset( $Des5[$i]  ) ?  strval($Des5[$i])  : '&nbsp;' );
+				echo '</tr>';
+			}
+			
+			
 		
-			echo '<tr>';
-			echo '<td>' . ( isset( $ProductNames[$i]  ) ? $ProductNames[$i]  : '&nbsp;' )
-			.'<td>' . 3 . '</td>'
-			.'<td>' . ( isset( $KW3[$i]  ) ? $KW3[$i]  : '&nbsp;' )
-			.'<td>' . ( isset( $Des3[$i]  ) ? $Des3[$i]  : '&nbsp;' );
-			echo '</tr>';
-
-			echo '<tr>';
-			echo '<td>' . ( isset( $ProductNames[$i]  ) ? $ProductNames[$i]  : '&nbsp;' )
-			.'<td>' . 4 . '</td>'
-			.'<td>' . ( isset( $KW4[$i]  ) ? $KW4[$i]  : '&nbsp;' )
-			.'<td>' . ( isset( $Des4[$i]  ) ? $Des4[$i]  : '&nbsp;' );
-			echo '</tr>';
-
-			echo '<tr>';
-			echo '<td>' . ( isset( $ProductNames[$i]  ) ? $ProductNames[$i]  : '&nbsp;' )
-			.'<td>' . 5 . '</td>'
-			.'<td>' . ( isset( $KW5[$i]  ) ? $KW5[$i]  : '&nbsp;' )
-			.'<td>' . ( isset( $Des5[$i]  ) ? $Des5[$i]  : '&nbsp;' );
-			echo '</tr>';
-
 			
 
 			}

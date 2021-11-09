@@ -6,6 +6,6 @@
 	</title>
 </head>
 <body>
-<a href="src/test.php">Click</a>
+<?php include 'src/test.php' ?>
 </body>
 </html>
